@@ -6,6 +6,8 @@ library(fredr) #Federal Reserve Economic Data
 library(tidyquant) #Bridge between fredr and tidyverse
 library(tidyverse)
 
+start_time = Sys.time()
+
 #----
 # API Setup
 
@@ -60,5 +62,6 @@ cat("⚠ CFTC COT: manual download required — handle in 02_load.R\n")
 
 cat("\nFetch complete. Files saved to data/raw/\n")
 
-
+run_time <- as.numeric(Sys.time() - start_time, units = "secs")
+print(paste0("Total Run Time: ", round(run_time, 2), " seconds"))
 
