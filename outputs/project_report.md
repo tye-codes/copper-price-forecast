@@ -46,6 +46,24 @@ Dynamic regression with ARIMA errors, implemented in R. This approach was chosen
 
 ---
 
+## Contribution Record
+
+All code in this project was written by Tye Routh. The table below documents independent effort per step and the nature of any guidance received. Bars are approximate (each block ≈ 10%).
+
+| Step | Tye's Contribution | Claude's Role |
+|---|---|---|
+| Database & schema design | `█████████░ 90%` | Confirmed medallion architecture was appropriate; no code authored |
+| Data fetching (`01_fetch.R`) | `████████░░ 80%` | Advised on fredr/tidyquant API usage; all code written independently |
+| Bronze layer loading (`02_load.R`) | `███████░░░ 75%` | Guided nested loop structure; corrected bracket notation, rbind syntax, string concatenation, and exdir uniqueness |
+| Silver layer DDL | `█████████░ 90%` | Reviewed for correctness; not authored |
+| Silver stored procedure | `███████░░░ 70%` | Explained forward-fill CTE concept and COT recursive date spine; corrected 4 syntax/logic issues (column name mismatch, CTE chain syntax, wrong table reference, copy-paste in CATCH block) |
+| Gold layer view | `████████░░ 85%` | Explained view vs table tradeoff; advised `CREATE OR ALTER VIEW` for re-runnability; flagged dxy alias inconsistency; all SQL written independently |
+| Data validation (NULL check) | `█████████░ 95%` | Explained INNER JOIN behaviour conceptually; query written and executed independently |
+
+*The project report and README were authored by Claude at Tye's direction.*
+
+---
+
 ## Results
 
 *To be completed.*
