@@ -82,8 +82,8 @@ for (i in 1:length(zip_files)) {
   for (xls in xls_file) {
     df <- readxl::read_excel(xls) 
       
-    df <- df[grepl("COPPER- #1 - COMMODITY EXCHANGE INC",
-            df$Market_and_Exchange_Names),]
+    df <- df[grepl("COPPER.*#1.*COMMODITY EXCHANGE INC", 
+                   df$Market_and_Exchange_Names),]
     
     df <- df[, c("Report_Date_as_MM_DD_YYYY",
                "M_Money_Positions_Long_ALL",
