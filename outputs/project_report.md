@@ -66,6 +66,22 @@ All code in this project was written by Tye Routh. The table below documents ind
 
 ## Results
 
+### Exploratory Analysis
+
+**Copper futures price — 2006 to present**
+
+![Copper price time series](figures/copper_price_ts.png)
+
+**Pairwise correlations across all variables**
+
+![Pairwise correlation plot](figures/ggpairs_correlation.png)
+
+Correlations between individual predictors and copper price are weak, consistent with the expectation that the relationship is conditional and regime-dependent rather than linear. DXY and Brent show multimodal marginal distributions, indicating distinct price regimes over the 20-year window. Shanghai Composite is right-skewed.
+
+DXY was binned into three equal-width regimes based on its distribution: Low (dominant 2007–2014, post-GFC quantitative easing), Medium (2015–2021 and 2025), and High (2022–2024, Fed rate-hiking cycle). These regimes are economically coherent and will be used as interaction terms in the model, with Medium as the reference category.
+
+### Model
+
 *To be completed.*
 
 ---
