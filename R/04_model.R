@@ -8,8 +8,11 @@ library(tseries)
 #VARs
 library(urca)
 library(vars)
-#markov switching 
-library(MSwM)
+#VECM
+library(tsDyn)
+library(vars)
+
+library(forecast)
 
 
 con <- dbConnect(
@@ -21,6 +24,11 @@ con <- dbConnect(
 
 
 master_table <- dbGetQuery(con, "SELECT * FROM gold.master_table")
+
+target_cols <- c("copper_price", "brent_price", "net_position", "dxy", "shanghai_close")
+
+
+GDP <- ts(coppe)
 
 n        <- nrow(master_table)
 train_n  <- floor(0.8 * n)
@@ -64,12 +72,6 @@ summary(m)
 
 VCEM(data = )
 
-MS_lm <- lm(copper_price_adj ~ ecm_term + dxy + brent_price + shanghai_close + net_position, 
-        data = train_data)
-msmFit(MS_lm, 
-       k = 3, 
-       sw = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE),
-       p = 0
-       )
+
 
 
