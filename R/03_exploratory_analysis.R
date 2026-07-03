@@ -5,6 +5,8 @@ library(ggplot2)
 library(dplyr)
 library(tseries)
 library(strucchange)
+library(ggplot2)
+library(forecast)
 
 con <- dbConnect(
   drv = odbc::odbc(),
@@ -43,18 +45,12 @@ plots <- lapply(vars, function(v) {
     theme_minimal()
 })
 
-# arrange all plots in a grid
-dxy_scatter <- patchwork::wrap_plots(plots)
+#box-cox transformation 
+lambda <- round(BoxCox.lambda(master_table$dxy),1)
 
-#structural break inferred through dxy relationship
-
-bp <- breakpoints(copper_price ~ brent_price + net_position + dxy + shanghai_close,
-            h = 0.15,
-            data = master_table)
-
-plot(bp)
-summary(bp)
-
+ggplot(master_table, 
+       aes(x = date, y = dxy)) +
+  geom_line()
 
 # saving files for claude to use in the report.
 ggsave("outputs/figures/dxy_scatter.png", plot = dxy_scatter, width = 10, height = 5)
