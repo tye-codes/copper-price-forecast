@@ -16,7 +16,8 @@ con <- dbConnect(
   Trusted_Connection = "Yes")
 
 
-master_table <- dbGetQuery(con, "SELECT * FROM gold.master_table")
+master_table <- dbGetQuery(con, "SELECT * FROM gold.master_table") %>%
+  mutate()
 
 # time series plot
 time_series <- ggplot(master_table, aes(x = date, y = copper_price)) +
